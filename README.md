@@ -1,4 +1,6 @@
-# 💤 LazyVim
+# 💤 Marifante's LazyVim configuration 
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+## Usage
+
+1) Clone this repository to your nvim configuration folder. On Mac: `~/.config/nvim`.
+2) Run `./install_reqs.sh` script to install pre-requisites.
