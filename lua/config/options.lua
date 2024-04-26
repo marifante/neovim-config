@@ -27,3 +27,5 @@ vim.cmd([[
 vim.cmd([[
   command! TrimWhitespace execute ':%s/\s\+$//e' | write
 ]])
+
+vim.opt.clipboard = "unnamedplus"
