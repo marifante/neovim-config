@@ -13,7 +13,7 @@ OS="Linux"
 ###############################################################################
 ## Function
 log() {
-	echo "$(date +"%Y-%m-%dT%H:%M:%S.%03N") - $*"
+    echo "$(date +"%Y-%m-%dT%H:%M:%S.%03N") - $*"
 }
 
 determine_system_pkg_installer() {
@@ -22,9 +22,9 @@ determine_system_pkg_installer() {
     log "Determining which package manager to use..."
 
     if [[ "${OS}" == "Linux" ]]; then
-    	SYS_INSTALLER="sudo apt install -y"
+        SYS_INSTALLER="sudo apt install -y"
     else
-    	log "OS not supported: ${OS}"
+        log "OS not supported: ${OS}"
         exit 1
     fi
 
@@ -32,7 +32,7 @@ determine_system_pkg_installer() {
 }
 
 install_reqs() {
-    local PKGS_TO_INSTALL=( "python3-venv" "ripgrep" )
+    local PKGS_TO_INSTALL=("python3-venv" "ripgrep" "fzf")
 
     log "Installing reqs for OS = ${OS}"
 
@@ -50,7 +50,7 @@ install_nvim() {
 
     log "Downloading app.image from ${URI} to ${DOWNLOAD_PATH}"
     mkdir -p ${DOWNLOAD_DIR}
-    curl -L -o "${DOWNLOAD_PATH}" "${URI}" 
+    curl -L -o "${DOWNLOAD_PATH}" "${URI}"
     chmod u+x "${DOWNLOAD_PATH}"
 
     log "Creating symbolic link to ${INSTALL_PATH}"
