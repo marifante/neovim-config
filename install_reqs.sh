@@ -32,7 +32,12 @@ determine_system_pkg_installer() {
 }
 
 install_reqs() {
-    local PKGS_TO_INSTALL=("python3-venv" "ripgrep" "fzf")
+    # kitty => used by https://github.com/folke/snacks.nvim/tree/bc0630e43be5699bb94dadc302c0d21615421d93
+    # fd => used by Snacks.picker
+    # lazygit => used by Snacks.lazygit
+    # luarocks => used by luarocks
+    # lua5.4 => used by luarocks
+    local PKGS_TO_INSTALL=("python3-venv" "ripgrep" "fzf" "kitty" "fd-find" "lua5.4" "liblua5.4-dev")
 
     log "Installing reqs for OS = ${OS}"
 
@@ -40,6 +45,24 @@ install_reqs() {
         echo "Installing ${package}..."
         ${SYS_INSTALLER} "${package}"
     done
+
+    log "Installing lazygit..."
+    local LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+    curl -L -o lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit -D -t /usr/local/bin/
+
+    log "Installing luarocks..."
+    wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+    tar zxpf luarocks-3.11.1.tar.gz
+    cd luarocks-3.11.1 && ./configure && make && sudo make install && cd -
+    sudo luarocks install luasocket
+
+    log "Installing mmdc tool with npm"
+    sudo npm install -g @mermaid-js/mermaid-cli
+
+    log "Set kitty as default terminal emulator"
+    sudo update-alternatives --set x-terminal-emulator $(which kitty)
 }
 
 install_nvim() {
