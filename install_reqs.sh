@@ -37,7 +37,7 @@ install_reqs() {
     # lazygit => used by Snacks.lazygit
     # luarocks => used by luarocks
     # lua5.4 => used by luarocks
-    local PKGS_TO_INSTALL=("python3-venv" "ripgrep" "fzf" "kitty" "fd-find" "lua5.4" "liblua5.4-dev")
+    local PKGS_TO_INSTALL=("make" "npm" "curl" "python3-venv" "ripgrep" "fzf" "kitty" "fd-find" "lua5.4" "liblua5.4-dev")
 
     log "Installing reqs for OS = ${OS}"
 
@@ -63,6 +63,9 @@ install_reqs() {
 
     log "Set kitty as default terminal emulator"
     sudo update-alternatives --set x-terminal-emulator $(which kitty)
+
+    # TODO: install latest node.js version to support copilot
+    # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
 }
 
 install_nvim() {
