@@ -64,6 +64,9 @@ install_reqs() {
     log "Set kitty as default terminal emulator"
     sudo update-alternatives --set x-terminal-emulator $(which kitty)
 
+    log "Installing markdown lint cli"
+    sudo npm install markdownlint-cli2 --global
+
     # TODO: install latest node.js version to support copilot
     # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
 }
