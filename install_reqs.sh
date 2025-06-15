@@ -67,6 +67,9 @@ install_reqs() {
     log "Installing markdown lint cli"
     sudo npm install markdownlint-cli2 --global
 
+    log "Installing chrome-headless-shell needed by diagrams.nvim"
+    npx puppeteer browsers install chrome-headless-shell
+
     # TODO: install latest node.js version to support copilot
     # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
 }
