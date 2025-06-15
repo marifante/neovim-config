@@ -31,6 +31,17 @@ determine_system_pkg_installer() {
     log "This is a ${OS} computer, using ${SYS_INSTALLER} to install..."
 }
 
+add_if_missing() {
+    local line="$1"
+    local file="$2"
+    if grep -Fxq "$line" "${file}" 2>/dev/null; then
+        log "Line already present: $line"
+    else
+        echo "$line" >>"${file}"
+        log "Added line: $line"
+    fi
+}
+
 install_reqs() {
     # kitty => used by https://github.com/folke/snacks.nvim/tree/bc0630e43be5699bb94dadc302c0d21615421d93
     # fd => used by Snacks.picker
@@ -70,6 +81,8 @@ install_reqs() {
     log "Installing chrome-headless-shell needed by diagrams.nvim"
     npx puppeteer browsers install chrome-headless-shell
 
+    add_if_missing "set -gq allow-passthrough on" "${HOME}/.tmux.conf"
+    add_if_missing "set -g visual-activity off" "${HOME}/.tmux.conf"
     # TODO: install latest node.js version to support copilot
     # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
 }

@@ -9,3 +9,4 @@ data
 *.swp
 lazygit*
 luarocks*
+node_modules/
