@@ -81,8 +81,12 @@ install_reqs() {
     log "Installing chrome-headless-shell needed by diagrams.nvim"
     npx puppeteer browsers install chrome-headless-shell
 
+    log "Installing stuff needed by image.nvim"
     add_if_missing "set -gq allow-passthrough on" "${HOME}/.tmux.conf"
     add_if_missing "set -g visual-activity off" "${HOME}/.tmux.conf"
+    sudo apt install -y imagemagick libmagickwand-dev
+    log "Please, use kitty as terminal emualator to use image.nvim properly."
+
     # TODO: install latest node.js version to support copilot
     # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
 }
