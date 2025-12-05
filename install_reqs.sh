@@ -87,6 +87,9 @@ install_reqs() {
     sudo apt install -y imagemagick libmagickwand-dev
     log "Please, use kitty as terminal emualator to use image.nvim properly."
 
+    log "Installing gemini cli"
+    sudo npm install -g @google/gemini-cli
+
     # TODO: install latest node.js version to support copilot
     # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
 }
