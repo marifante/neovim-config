@@ -10,6 +10,13 @@ require("image").setup({
       only_render_image_at_cursor_mode = "popup",
       floating_windows = false, -- if true, images will be rendered in floating markdown windows
       filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+      resolve_image_path = function(document_path, image_path, fallback)
+        -- Skip SVG files as they cause ImageMagick conversion errors
+        if image_path:match("%.svg$") then
+          return nil
+        end
+        return fallback(document_path, image_path)
+      end,
     },
     neorg = {
       enabled = true,

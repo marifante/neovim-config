@@ -5,14 +5,14 @@ return {
   },
   {
     "3rd/image.nvim",
+    ft = { "markdown", "vimwiki", "norg", "typst" },
     config = function()
-      require("image").setup({
-        require("config.image"),
-      })
+      require("config.image")
     end,
   },
   {
     "3rd/diagram.nvim",
+    ft = { "markdown", "norg" },
     dependencies = {
       "3rd/image.nvim",
       "luarocks.nvim",
