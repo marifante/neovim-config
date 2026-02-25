@@ -12,7 +12,7 @@ opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 -- Configure to show trailling whitespaces with a middle dot and
 -- highlighter in red
 opt.list = true
-opt.listchars = { tab = "| ", trail = "·" }
+opt.listchars = { tab = "→ ", trail = "·" }
 
 vim.cmd([[
   highlight ExtraWhitespace ctermbg=red guibg=red
