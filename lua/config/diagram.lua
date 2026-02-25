@@ -1,6 +1,6 @@
 require("diagram").setup({
   integrations = {
-    require("diagram.integrations.markdown"),
+    -- require("diagram.integrations.markdown"),  -- Disabled due to image.nvim initialization issue
     require("diagram.integrations.neorg"),
   },
   renderer_options = {
