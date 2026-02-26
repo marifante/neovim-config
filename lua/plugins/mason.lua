@@ -29,6 +29,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "pyright",
+        "rust_analyzer",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -44,5 +45,10 @@ return {
         "eslint_d", -- js linter
       },
     })
+
+    vim.notify(
+      "Note: To use Rust LSP, install Rust with: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      vim.log.levels.INFO
+    )
   end,
 }

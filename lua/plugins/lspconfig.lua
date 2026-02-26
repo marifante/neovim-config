@@ -115,5 +115,7 @@ return {
         },
       },
     })
+
+    -- Rust is configured via rustaceanvim plugin, no setup needed here
   end,
 }

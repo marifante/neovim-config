@@ -92,6 +92,9 @@ install_reqs() {
 
     # TODO: install latest node.js version to support copilot
     # https://medium.com/@redswitches/install-the-latest-node-js-version-on-ubuntu-22-04-ca7d7c83a5b0
+
+    log "Installing rust tools"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 install_nvim() {
