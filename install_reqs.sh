@@ -48,7 +48,7 @@ install_reqs() {
     # lazygit => used by Snacks.lazygit
     # luarocks => used by luarocks
     # lua5.1 => used by luarocks
-    local PKGS_TO_INSTALL=("make" "npm" "curl" "python3-venv" "ripgrep" "fzf" "kitty" "fd-find" "lua5.1" "liblua5.1-dev" "plantuml")
+    local PKGS_TO_INSTALL=("make" "npm" "curl" "python3-venv" "ripgrep" "fzf" "kitty" "fd-find" "lua5.1" "liblua5.1-dev" "plantuml" "wl-clipboard")
 
     log "Installing reqs for OS = ${OS}"
 
